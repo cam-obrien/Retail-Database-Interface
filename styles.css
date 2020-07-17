@@ -1,0 +1,56 @@
+header:hover {
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: none;
+}
+header {
+	color: black;
+	font-size: 400%;
+	text-align: center;
+	background-color: lightskyblue;
+	font-weight: 500;
+	text-decoration: none;
+}
+
+body {
+	background-color: lightgrey;
+}
+a {
+	color: black;
+}
+
+.welcome {
+	color: lightskyblue;
+	background-color: black;
+	text-align: center;
+}
+
+.instructions {
+	color: black;
+	background-color: white;
+	text-align: center;
+}
+
+.topbar {
+	text-align: center;
+	border: 2px black;
+	display: flex;
+	list-style-type: none;
+	outline: black;
+	padding-top: 1%;
+	padding-bottom: 1%;
+	outline-width: 1px;
+	font-size: 150%;
+	text-decoration: none;
+	font-weight: 600;
+}
+
+form {
+	text-align: center;
+	float: inline-start;
+}
+
+.viewProducts {
+	color: red;
+}
