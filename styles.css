@@ -33,6 +33,7 @@ a {
 }
 
 .topbar {
+	position: right;
 	text-align: center;
 	border: 2px black;
 	display: flex;
