@@ -7,7 +7,7 @@
     <!-- Bootstrap CSS -->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 	<link rel="stylesheet" href="styles.css">
-	<title>Products Page</title>
+	<title>Orders Page</title>
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" ></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" ></script>
@@ -15,27 +15,25 @@
 
   <body>
 	<form>
-	<header>Products</header>
-	<a href="http://web.engr.oregonstate.edu/~jonesd5/212Pride/products.html">
-	<button type="button">View Products</button>
+	<header>Orders</header>
+	<a href="http://web.engr.oregonstate.edu/~jonesd5/212Pride/orders.html">
+	<button type="button">View Orders</button>
 	</a>
-	<a href="http://web.engr.oregonstate.edu/~jonesd5/212Pride/modifyProducts.html">
-	<button type="button">Add Products</button><br><br>
+	<a href="http://web.engr.oregonstate.edu/~jonesd5/212Pride/modifyOrders.html">
+	<button type="button">Add Orders</button><br><br>
 	</a>
-		<label for="productID"class="productID">Product ID:</label>
-		<input type="number" placeholder="6"name="productID"><br>
-		<label for="productName" class="productName">Product name:</label>
-		<input type="text" placeholder="Cleats"name="productName"><br>
-		<label for="brand">Brand:</label>
-		<input type="text" placeholder="Brine"brand"><br>
-		<label for="price">Price:</label>
-		<input type="number" placeholder="$89.99" step="0.01" min="0"><br>
-		<label for="category">Category:</label>
-		<input type="category" placeholder="Footwear"category"><br>
-		<label for="color">Color:</label>
-		<input type="text"placeholder="Red" name="color"><br>
-		<label for="sale">Sale:</label>
-		<input type="checkbox" name="sale"><br>
+		<label for="orderID"class="orderID">Order ID:</label>
+		<input type="number" placeholder="1"name="orderID"><br>
+		<label for="customerID" class="customerID">Customer ID:</label>
+		<input type="number" placeholder="3"name="customerID"><br>
+		<label for="productID">ProductID:</label>
+		<input type="number" placeholder="???" name="productID"><br>
+		<label for="dateOrdered">Date Ordered:</label>
+		<input type="date" placeholder="05/12/2020"name="dateOrdered"><br>
+		<label for="dateDelivered">Date Delivered:</label>
+		<input type="date" placeholder="05/16/2020" name="dateDelivered"><br>
+		<label for="totalPrice">Total Price:</label>
+		<input type="number" placeholder="$120.99" step="0.01" min="0"><br>
 		<input type="submit" name="submit">
 		
 	<nav class="topbars">

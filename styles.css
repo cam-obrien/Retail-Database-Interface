@@ -1,6 +1,15 @@
 header:hover {
 	text-decoration: none;
 }
+
+.deleteBtn {
+	color: red;
+	background-color: lightgray;
+}
+
+.editBtn {
+	background-color: lightgray;
+}
 a:hover {
 	text-decoration: none;
 }
@@ -58,7 +67,7 @@ form {
 }
 
 th {
-	background-color: lightblue;
+	background-color: lightskyblue;
 }
 
 td {
@@ -69,3 +78,4 @@ table, th, td {
 	border: 2px solid black;
 	text-align: center;
   }
+
