@@ -46,8 +46,12 @@ img {
 	display: hidden;
 }
 
+.modifyStoresContainer{
+	margin-left: 265px;
+}
+
 .topbars {
-	position: fixed;
+	position: absolute;
 	display: inline-block;
   min-width: 250px;
   max-width: 250px;
@@ -74,6 +78,10 @@ img {
 	padding-right: 0%;
 }
 
+.ordersContainer{
+	margin-left: 265px;
+}
+
 form {
 	text-align: center;
 }
@@ -92,11 +100,35 @@ table, th, td {
 	float: initial;
 }
 
+.customersContainer{
+	margin-left: 265px;
+	text-align: center;
+}
+.orderProductsContainer{
+	margin-left: 265px;
+}
+
+.productsContainer{
+	margin-left: 265px;
+}
+
+.storesContainer{
+	margin-left: 265px;
+}
+
 .imageContainer{
 	position: fixed;
 	margin-left: 350px;
 	margin-top: 10px;
 
+}
+
+.modifyOrdersContainer{
+	margin-left: 265px;
+}
+
+.modifyCustomersContainer{
+	margin-left: 265px;
 }
 
 .laxPic {

@@ -14,14 +14,27 @@
   </head>
 
   <body>
-	<form>
 	<header>Stores</header>
-	<a href="http://web.engr.oregonstate.edu/~jonesd5/212Pride/stores.html">
-	<button type="button">View Stores</button>
-	</a>
-	<a href="http://web.engr.oregonstate.edu/~jonesd5/212Pride/modifyStores.html">
-	<button type="button">Add Store</button><br><br>
-	</a>
+  <nav class="topbars">
+    <ul>
+      <li class="topbar"><a href="http://web.engr.oregonstate.edu/~jonesd5/212Pride/index.html">Home</a></li>
+      <li class="topbar"><a href="http://web.engr.oregonstate.edu/~jonesd5/212Pride/products.html">Products</a></li>
+      <li class="topbar"><a href="http://web.engr.oregonstate.edu/~jonesd5/212Pride/orders.html">Orders</a></li>
+      <li class="topbar"><a href="http://web.engr.oregonstate.edu/~jonesd5/212Pride/customers.html">Customers</a></li>
+      <li class="topbar"><a href="http://web.engr.oregonstate.edu/~jonesd5/212Pride/stores.html">Stores</a></li>
+      <li class="topbar"><a href="http://web.engr.oregonstate.edu/~jonesd5/212Pride/orderProducts.html">Order_Products</a></li>
+    </ul>
+  </nav>
+  <form>
+  <div class="modifyStoresContainer">
+  	<a href="http://web.engr.oregonstate.edu/~jonesd5/212Pride/stores.html">
+  	<button type="button">View Stores</button>
+  	</a>
+  	<a href="http://web.engr.oregonstate.edu/~jonesd5/212Pride/modifyStores.html">
+  	<button type="button">Add Store</button><br><br>
+  	</a>
+
+
 		<label for="storeID"class="storeID">Store ID:</label>
 		<input type="number" placeholder="1"name="storeID"><br>
 		<label for="address" class="address">Address:</label>
@@ -35,19 +48,8 @@
 		<label for="hours">Hours:</label>
 		<input type="text" placeholder="10am-8pm" name="hours"><br>
 		<input type="submit" name="submit">
-		
-	<nav class="topbars">
-		<ul> 
-			<li class="topbar"><a href="http://web.engr.oregonstate.edu/~jonesd5/212Pride/index.html">Home</a></li>
-			<li class="topbar"><a href="http://web.engr.oregonstate.edu/~jonesd5/212Pride/products.html">Products</a></li>
-			<li class="topbar"><a href="http://web.engr.oregonstate.edu/~jonesd5/212Pride/orders.html">Orders</a></li>
-			<li class="topbar"><a href="http://web.engr.oregonstate.edu/~jonesd5/212Pride/customers.html">Customers</a></li>
-			<li class="topbar"><a href="http://web.engr.oregonstate.edu/~jonesd5/212Pride/stores.html">Stores</a></li>
-			<li class="topbar"><a href="http://web.engr.oregonstate.edu/~jonesd5/212Pride/orderProducts.html">Order_Products</a></li>
-		</ul>
-	</nav>
-	
-		
+	</div>
+
 	</form>
   </body>
 </html>
