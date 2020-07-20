@@ -46,10 +46,6 @@ img {
 	display: hidden;
 }
 
-.modifyStoresContainer{
-	margin-left: 265px;
-}
-
 .topbars {
 	position: absolute;
 	display: inline-block;
@@ -78,9 +74,6 @@ img {
 	padding-right: 0%;
 }
 
-.ordersContainer{
-	margin-left: 50px;
-}
 
 form {
 	text-align: center;
@@ -97,6 +90,10 @@ td {
 table, th, td {
 	border: 2px solid black;
 	text-align: center;
+}
+
+.ordersContainer{
+	margin-left: 50px;
 }
 
 .customersContainer{
@@ -122,13 +119,6 @@ table, th, td {
 
 }
 
-.modifyOrdersContainer{
-	margin-left: 265px;
-}
-
-.modifyCustomersContainer{
-	margin-left: 265px;
-}
 
 .OPSearch {
   width: 300px;
