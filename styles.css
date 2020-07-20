@@ -51,8 +51,7 @@ a {
   border-radius: 3px;
   background-color: #efefef;
 }
-
-.topbar {
+/*.topbar {
 	position: right;
 	text-align: center;
 	border: 2px black;
@@ -68,7 +67,7 @@ a {
 	margin: 0%;
 	margin-right: 0%;
 	padding-right: 0%;
-}
+}*/
 
 form {
 	text-align: center;
