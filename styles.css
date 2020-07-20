@@ -79,7 +79,7 @@ img {
 }
 
 .ordersContainer{
-	margin-left: 265px;
+	margin-left: 50px;
 }
 
 form {
@@ -97,28 +97,27 @@ td {
 table, th, td {
 	border: 2px solid black;
 	text-align: center;
-	float: initial;
 }
 
 .customersContainer{
-	margin-left: 265px;
+	margin-left: 50px;
 	text-align: center;
 }
 .orderProductsContainer{
-	margin-left: 265px;
+	margin-left: 50px;
 }
 
 .productsContainer{
-	margin-left: 265px;
+	margin-left: 50px;
 }
 
 .storesContainer{
-	margin-left: 265px;
+	margin-left: 50px;
 }
 
 .imageContainer{
 	position: fixed;
-	margin-left: 350px;
+	margin-left: 675px;
 	margin-top: 10px;
 
 }
@@ -130,11 +129,6 @@ table, th, td {
 .modifyCustomersContainer{
 	margin-left: 265px;
 }
-
-.laxPic {
-  position: right;
-}
-
 
 .OPSearch {
   width: 300px;
