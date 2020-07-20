@@ -42,6 +42,16 @@ a {
 	text-align: center;
 }
 
+.topbar-container{
+	display: inline-block;
+  min-width: 200px;
+  max-width: 200px;
+  margin: 10px 10px auto 10px;
+  padding: 20px;
+  border-radius: 3px;
+  background-color: #efefef;
+}
+
 .topbar {
 	position: right;
 	text-align: center;
