@@ -42,9 +42,7 @@ a {
 	text-align: center;
 }
 
-img {
-	display: hidden;
-}
+
 
 .topbars {
 	position: absolute;
@@ -114,9 +112,8 @@ table, th, td {
 
 .imageContainer{
 	position: fixed;
-	margin-left: 675px;
+	margin-left: 650px;
 	margin-top: 10px;
-
 }
 
 
