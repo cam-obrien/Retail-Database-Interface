@@ -19,6 +19,14 @@ CREATE TABLE Customers (
 	PRIMARY KEY (customerID),
 	UNIQUE (customerID)
 );
+
+INSERT INTO Customers (customerID, orderID, email, firstName, lastName, address, dob, phone, city, state, zipcode)
+VALUES (1, 2, "sicklaxcoach@gmail.com", "Cody", "Langvin", "405 121st Ave", 03/14/1992, 5419783623, "Bend", "Oregon", "97703");
+
+INSERT INTO Orders (orderID, customerID, dateOrdered, dateDelivered, totalPrice)
+VALUES (1, 2, 06/29/2020, 07/02/2020, 204.99);
+
+
 DROP TABLE IF EXISTS Orders;
 CREATE TABLE Orders (
 	orderID INT NOT NULL AUTO_INCREMENT,
@@ -31,6 +39,16 @@ CREATE TABLE Orders (
 	UNIQUE (orderID, productID)
 );
 
+DROP TABLE IF EXISTS Customer_Orders;
+CREATE TABLE Customer_Orders (
+	customerID INT NOT NULL,
+	orderID INT NOT NULL
+);
+
+ALTER TABLE Customer_Orders ADD FOREIGN KEY (customerID) REFERENCES Customers(customerID) ON UPDATE CASCADE ON DELETE CASCADE;
+ALTER TABLE Customer_Orders ADD FOREIGN KEY (orderID) REFERENCES Orders(orderID) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
 DROP TABLE IF EXISTS Products;
 CREATE TABLE Products (
 	productID INT NOT NULL AUTO_INCREMENT,
@@ -42,6 +60,11 @@ CREATE TABLE Products (
 	color varchar(255) NOT NULL,
 	PRIMARY KEY (productID)
 );
+
+-- Dump for Products table
+INSERT INTO Products (productID, productName, brandName, price, category, sale, color) VALUES (1, "Lacrosse Stick", "STX", 149.99, "Equipment", False, "Silver/Black");
+INSERT INTO Products (productID, productName, brandName, price, category, sale, color) VALUES (2, "T-Shirt", "Nike", 24.99, "Apparel", False, "Royal Blue");
+INSERT INTO Products (productID, productName, brandName, price, category, sale, color) VALUES (3, "Cascade S Helmet", "Cascade", 289.99, "Equipment", False, "Matte Grey");
 
 DROP TABLE IF EXISTS Order_Products;
 CREATE TABLE Order_Products (
@@ -60,8 +83,11 @@ CREATE TABLE Stores (
 	PRIMARY KEY (storeID)
 );
 
+INSERT INTO Stores (storeID, city, state, address, hours, daysOpen) VALUES (1, "125 Spooner St", "Portland", "Oregon", "Monday-Sunday", "10am-8pm");
+
 ALTER TABLE Customers ADD FOREIGN KEY (orderID) REFERENCES Orders(orderID) ON UPDATE CASCADE ON DELETE CASCADE;
 ALTER TABLE Orders ADD FOREIGN KEY (customerID) REFERENCES Customers(customerID) ON UPDATE CASCADE ON DELETE CASCADE;
 ALTER TABLE Orders ADD FOREIGN KEY (productID) REFERENCES Products(productID) ON UPDATE CASCADE ON DELETE CASCADE;
-ALTER TABLE Order_Products ADD FOREIGN KEY (productID) REFERENCES Products(productID) ON UPDATE CASCADE ON DELETE CASCADE;
-ALTER TABLE Order_Products ADD FOREIGN KEY (orderID) REFERENCES Orders(orderID) ON UPDATE CASCADE ON DELETE CASCADE;
+--ALTER TABLE Order_Products ADD FOREIGN KEY (productID) REFERENCES Products(productID) ON UPDATE CASCADE ON DELETE CASCADE;
+--ALTER TABLE Order_Products ADD FOREIGN KEY (orderID) REFERENCES Orders(orderID) ON UPDATE CASCADE ON DELETE CASCADE;
+
