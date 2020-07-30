@@ -1,0 +1,127 @@
+header:hover {
+	text-decoration: none;
+}
+
+.deleteBtn {
+	color: red;
+	background-color: lightgray;
+}
+
+.editBtn {
+	background-color: lightgray;
+}
+a:hover {
+	text-decoration: none;
+}
+header {
+	color: black;
+	font-size: 400%;
+	text-align: center;
+	background-color: lightskyblue;
+	font-weight: 500;
+	text-decoration: none;
+	margin-bottom: 1%;
+}
+
+body {
+	background-color: lightgrey;
+}
+a {
+	color: black;
+}
+
+.welcome {
+	color: lightskyblue;
+	background-color: black;
+	text-align: center;
+}
+
+.instructions {
+	color: black;
+	background-color: white;
+	text-align: center;
+}
+
+
+
+.topbars {
+	position: absolute;
+	display: inline-block;
+  min-width: 250px;
+  max-width: 250px;
+  margin: 10px;
+  padding: 20px;
+  border-radius: 3px;
+  background-color: #efefef;
+}
+.topbar {
+	position: left;
+	text-align: center;
+	border: 2px black;
+	display: flex;
+	list-style-type: none;
+	outline: black;
+	padding-top: 1%;
+	padding-bottom: 1%;
+	outline-width: 1px;
+	font-size: 150%;
+	text-decoration: none;
+	font-weight: 600;
+	margin: 0%;
+	margin-right: 0%;
+	padding-right: 0%;
+}
+
+
+form {
+	text-align: center;
+}
+
+th {
+	background-color: lightskyblue;
+}
+
+td {
+	background-color: white;
+}
+
+table, th, td {
+	border: 2px solid black;
+	text-align: center;
+}
+
+.ordersContainer{
+	margin-left: 50px;
+}
+
+.customersContainer{
+	margin-left: 250px;
+	text-align: center;
+}
+.orderProductsContainer{
+	margin-left: 50px;
+}
+
+.productsContainer{
+	margin-left: 50px;
+}
+
+.storesContainer{
+	margin-left: 50px;
+}
+
+.imageContainer{
+	position: fixed;
+	margin-left: 650px;
+	margin-top: 10px;
+}
+
+
+.OPSearch {
+  width: 300px;
+  margin-right: 5px;
+}
+
+h3 {
+  font-size: 20px;
+  }

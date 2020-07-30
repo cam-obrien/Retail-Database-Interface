@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+	<link rel="stylesheet" href="static/styles.css">
+	<title>Stores Page</title>
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" ></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" ></script>
+  </head>
+
+  <body>
+	<header>Stores</header>
+  <nav class="topbars">
+    <ul>
+		<li class="topbar"><a href="http://flip3.engr.oregonstate.edu:7777/home">Home</a></li>
+		<li class="topbar"><a href="http://flip3.engr.oregonstate.edu:7777/products">Products</a></li>
+		<li class="topbar"><a href="http://flip3.engr.oregonstate.edu:7777/orders">Orders</a></li>
+		<li class="topbar"><a href="http://flip3.engr.oregonstate.edu:7777/customers">Customers</a></li>
+		<li class="topbar"><a href="http://flip3.engr.oregonstate.edu:7777/stores">Stores</a></li>
+		<li class="topbar"><a href="http://flip3.engr.oregonstate.edu:7777/orderproducts">Order_Products</a></li>
+	</ul>
+  </nav>
+  <form>
+  <div class="modifyStoresContainer">
+  	<a href="http://flip3.engr.oregonstate.edu:7777/stores">
+  	<button type="button">View Stores</button>
+  	</a>
+  	<a href="http://flip3.engr.oregonstate.edu:7777/modifystores">
+  	<button type="button">Add Store</button><br><br>
+  	</a>
+
+		<label for="storeID"class="storeID">Store ID:</label>
+		<input type="number" placeholder="1"name="storeID"><br>
+		<label for="address" class="address">Address:</label>
+		<input type="text" placeholder="125 Spooner St"name="address"><br>
+		<label for="city">City:</label>
+		<input type="text" placeholder="Portland" name="city"><br>
+		<label for="state">State:</label>
+		<input type="text" placeholder="Oregon"name="state"><br>
+		<label for="daysOpen">Days Open:</label>
+		<input type="text" placeholder="Monday-Sunday" name="daysOpen"><br>
+		<label for="hours">Hours:</label>
+		<input type="text" placeholder="10am-8pm" name="hours"><br>
+		<input type="submit" name="submit">
+	</div>
+
+	</form>
+  </body>
+</html>
