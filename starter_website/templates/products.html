@@ -46,42 +46,23 @@
     		  <th>Color</th>
     		  <th>Edit</th>
     		  <th>Delete</th>
-    		</tr>
-    		<tr>
-    		  <td>1</td>
-    		  <td>Lacrosse stick</td>
-    		  <td>STX</td>
-    		  <td>$149.99</td>
-    		  <td>Equipment</td>
-    		  <td>False</td>
-    		  <td>Silver/Black</td>
-    		  <td><button class="editBtn">Edit</button></td>
-    		  <td><button class="deleteBtn">X</button></td>
-    		</tr>
-
-    		<tr>
-    		  <td>2</td>
-    		  <td>T-Shirt</td>
-    		  <td>Nike</td>
-    		  <td>$24.99</td>
-    		  <td>Apparel</td>
-    		  <td>False</td>
-    		  <td>Royal Blue</td>
-    		  <td><button class="editBtn">Edit</button></td>
-    		  <td><button class="deleteBtn">X</button></td>
-    		</tr>
-
-    		<tr>
-    			<td>3</td>
-    			<td>Cascade S Helmet</td>
-    			<td>Cascade</td>
-    			<td>$289.99</td>
-    			<td>Equipment</td>
-    			<td>False</td>
-    			<td>Matte Grey</td>
-    			<td><button class="editBtn">Edit</button></td>
-    			<td><button class="deleteBtn">X</button></td>
-    		  </tr>
+			</tr>
+			
+			<tbody>
+				{% for r in rows %}
+				<tr>
+				  <td> {{ r.0 }}</td>
+				  <td> {{ r[1] }}</td>
+				  <td> {{ r[2] }}</td>
+				  <td> {{ r[3] }}</td>
+				  <td> {{ r[4] }}</td>
+				  <td> {{ r[5] }}</td>
+				  <td> {{ r[6] }}</td>
+				  <td> <input type='button' name='Update' value='Update' onclick="window.location = '/update_people/{{r[4]}}'"> </td>
+				  <td> <input type='button' name='Delete' value='Delete' onclick="window.location = '/delete_people/{{r[4]}}'"> </td>
+				</tr>
+				{% endfor %}
+			  </tbody>
 
     	</table>
     </div>

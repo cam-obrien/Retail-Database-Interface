@@ -16,7 +16,35 @@ def orders():
 
 @webapp.route('/products')
 def products():
-    return render_template('products.html')
+    print("Fetching and rendering products webpage")
+    db_connection = connect_to_database()
+    query = "SELECT productID, productName, brandName, price, category, sale, color FROM Products;"
+    result = execute_query(db_connection, query).fetchall()
+    print(result)
+    return render_template('products.html', rows=result)
+
+@webapp.route('/modifyproducts', methods=['POST', 'GET'])
+def modifyProducts():
+    db_connection = connect_to_database()
+    if request.method == 'GET':
+        query = 'SELECT productID, productName from Products'
+        result = execute_query(db_connection, query).fetchall()
+        print(result)
+        return render_template('modifyProducts.html', products = result)
+    elif request.method == 'POST':
+        print("Add new products!")
+        productID = request.form['productID']
+        productName = request.form['productName']
+        brandName = request.form['brandName']
+        price = request.form['price']
+        category = request.form['category']
+        sale = request.form['sale']
+        color = request.form['color']
+
+        query = 'INSERT INTO Products (productID, productName, brandName, price, category, sale, color) VALUES (%s,%s,%s,%s,%s,%s,%s)'
+        data = (productID, productName, brandName, price, category, sale, color)
+        execute_query(db_connection, query, data)
+        return ('Product added!')
 
 @webapp.route('/customers')
 def customers():
@@ -30,9 +58,7 @@ def orderProducts():
 def modifyCustomers():
     return render_template('modifyCustomers.html')
 
-@webapp.route('/modifyproducts')
-def modifyProducts():
-    return render_template('modifyProducts.html')
+
 
 @webapp.route('/modifystores')
 def modifyStores():
