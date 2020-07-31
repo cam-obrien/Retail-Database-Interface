@@ -34,7 +34,26 @@
     	<a href="http://flip3.engr.oregonstate.edu:7777/modifycustomers">
     	<button type="button">Add Customer</button><br><br>
     	</a>
-    		<label for="customerID" class="customerID">Customer ID:</label>
+		<form id="update_customers" action="/customers" method="post">
+			Email: <input type="text" name="email"><br>
+		  	First Name: <input type="text" name="firstName"><br>
+		  	Last Name: <input type="text" name="lastName"><br>
+			Address: <input type="text" name="address"><br>
+			Date of Birth: <input type="date" name="dob"><br>
+			Phone Number: <input type="text" name="phone"><br>
+			City: <input type="text" name="city"><br>
+			State: <input type="text" name="state"><br>
+			Zipcode: <input type="text" name="zipcode"><br>
+		  <input type="submit" value="Submit">
+	   </form>
+  	<br/>
+		
+		
+		
+		
+		
+		
+		<!-- <label for="customerID" class="customerID">Customer ID:</label>
     		<input type="number" placeholder="3"name="customerID"><br>
     		<label for="orderID"class="orderID">Order ID:</label>
     		<input type="number" placeholder="1"name="orderID"><br>
@@ -56,7 +75,7 @@
     		<input type="text" placeholder="Washington"><br>
     		<label for="zipcode">Zipcode:</label>
     		<input type="text" placeholder="97330"><br>
-    		<input type="submit" name="submit">
+    		<input type="submit" name="submit"> -->
 		</div>
 	</form>
   </body>

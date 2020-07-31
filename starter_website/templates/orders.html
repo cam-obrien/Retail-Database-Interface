@@ -32,7 +32,7 @@
   		<a href="http://flip3.engr.oregonstate.edu:7777/orders">
   		<button type="button">View Orders</button>
   		</a>
-  		<a href="http://flip3.engr.oregonstate.edu:7777/modifyorders">
+  		<a href="http://flip3.engr.oregonstate.edu:7777/modifyOrders">
   		<button type="button">Add Orders</button><br><br>
   		</a>
 
@@ -46,35 +46,20 @@
   		  <th>Edit</th>
   		  <th>Delete</th>
   		</tr>
-  		<tr>
-  		  <td>1</td>
-  		  <td>2</td>
-  		  <td>06/29/2020</td>
-  		  <td>07/02/2020</td>
-  		  <td>$204.99</td>
-  		  <td><button class="editBtn">Edit</button></td>
-  		  <td><button class="deleteBtn">X</button></td>
-  		</tr>
-
-  		<tr>
-  			<td>2</td>
-  			<td>1</td>
-  			<td>07/03/2020</td>
-  			<td>07/6/2020</td>
-  			<td>$109.99</td>
-  			<td><button class="editBtn">Edit</button></td>
-  			<td><button class="deleteBtn">X</button></td>
-  		</tr>
-
-  		<tr>
-  			<td>3</td>
-  		  <td>3</td>
-  		  <td>07/08/2020</td>
-  		  <td>07/13/2020</td>
-  		  <td>$204.99</td>
-  		  <td><button class="editBtn">Edit</button></td>
-  		  <td><button class="deleteBtn">X</button></td>
-  		  </tr>
+		  
+		  <tbody>
+			{% for r in rows %}
+			<tr>
+			  <td> {{ r.0 }}</td>
+			  <td> {{ r[1] }}</td>
+			  <td> {{ r[2] }}</td>
+			  <td> {{ r[3] }}</td>
+			  <td> {{ r[4] }}</td>
+			  <td> <input type='button' name='Update' value='Update' onclick="window.location = '/update_order/{{r[0]}}'"> </td>
+			  <td> <input type='button' name='Delete' value='Delete' onclick="window.location = '/delete_order/{{r[0]}}'"> </td>
+			</tr>
+			{% endfor %}
+		  </tbody>
 
   	  </table>
     </form>

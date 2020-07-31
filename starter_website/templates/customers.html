@@ -29,14 +29,13 @@
   		<a href="http://flip3.engr.oregonstate.edu:7777/customers">
   		<button type="button">View Customers</button>
   		</a>
-  		<a href="http://flip3.engr.oregonstate.edu:7777/modifycustomers">
+  		<a href="http://flip3.engr.oregonstate.edu:7777/modifyCustomers">
   		<button type="button">Add Customer</button><br><br>
   		</a>
 
   	<table style="width:60%;margin-left:auto;margin-right:auto">
   		<tr>
   		  <th>Customer ID</th>
-  		  <th>Order ID</th>
   		  <th>Email</th>
   		  <th>First name</th>
   		  <th>Last name</th>
@@ -49,54 +48,24 @@
   		  <th>Edit</th>
   		  <th>Delete</th>
   		</tr>
-  		<tr>
-  		  <td>1</td>
-  		  <td>2</td>
-  		  <td>sicklaxcoach@gmail.com</td>
-  		  <td>Cody</td>
-  		  <td>Langvin</td>
-  		  <td>405 121st Ave</td>
-  		  <td>03/14/1992</td>
-  		  <td>5419783623</td>
-  		  <td>Bend</td>
-  		  <td>Oregon</td>
-  		  <td>97703</td>
-  		  <td><button class="editBtn">Edit</button></td>
-  		  <td><button class="deleteBtn">X</button></td>
-  		</tr>
-
-  		<tr>
-  			<td>2</td>
-  		  <td>1</td>
-  		  <td>paulrabil99@gmail.com</td>
-  		  <td>Paul</td>
-  		  <td>Rabil</td>
-  		  <td>205 NW Cheddar St</td>
-  		  <td>12/14/1985</td>
-  		  <td>4205301297</td>
-  		  <td>Prideville</td>
-  		  <td>Maryland</td>
-  		  <td>23005</td>
-  		  <td><button class="editBtn">Edit</button></td>
-  		  <td><button class="deleteBtn">X</button></td>
-  		</tr>
-
-  		<tr>
-  			<td>3</td>
-  		  <td>3</td>
-  		  <td>tanzman@gmail.com</td>
-  		  <td>Johnathan</td>
-  		  <td>Tanz</td>
-  		  <td>190 SE Yardsale Ln</td>
-  		  <td>04/20/1998</td>
-  		  <td>5032031027</td>
-  		  <td>Beaverton</td>
-  		  <td>Oregon</td>
-  		  <td>97005</td>
-  		  <td><button class="editBtn">Edit</button></td>
-  		  <td><button class="deleteBtn">X</button></td>
-  		  </tr>
-
+			<tbody>
+				{% for r in rows %}
+				<tr>
+				  <td> {{ r.0 }}</td>
+				  <td> {{ r[1] }}</td>
+				  <td> {{ r[2] }}</td>
+				  <td> {{ r[3] }}</td>
+				  <td> {{ r[4] }}</td>
+				  <td> {{ r[5] }}</td>
+				  <td> {{ r[6] }}</td>
+				  <td> {{ r[7] }}</td>
+				  <td> {{ r[8] }}</td>
+				  <td> {{ r[9] }}</td>
+				  <td> <input type='button' name='Update' value='Update' onclick="window.location = '/update_customer/{{r[0]}}'"> </td>
+				  <td> <input type='button' name='Delete' value='Delete' onclick="window.location = '/delete_customer/{{r[0]}}'"> </td>
+				</tr>
+				{% endfor %}
+			  </tbody>
   	  </table>
     </form>
   </div>

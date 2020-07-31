@@ -30,22 +30,19 @@
     	<a href="http://flip3.engr.oregonstate.edu:7777/orders">
     	<button type="button">View Orders</button>
     	</a>
-    	<a href="http://flip3.engr.oregonstate.edu:7777/modifyorders">
+    	<a href="http://flip3.engr.oregonstate.edu:7777/modifyOrders">
     	<button type="button">Add Orders</button><br><br>
-    	</a>
-    		<label for="orderID"class="orderID">Order ID:</label>
-    		<input type="number" placeholder="1"name="orderID"><br>
-    		<label for="customerID" class="customerID">Customer ID:</label>
-    		<input type="number" placeholder="3"name="customerID"><br>
-    		<label for="dateOrdered">Date Ordered:</label>
-    		<input type="date" placeholder="05/12/2020"name="dateOrdered"><br>
-    		<label for="dateDelivered">Date Delivered:</label>
-    		<input type="date" placeholder="05/16/2020" name="dateDelivered"><br>
-    		<label for="totalPrice">Total Price:</label>
-    		<input type="number" placeholder="$120.99" step="0.01" min="0"><br>
-    		<input type="submit" name="submit">
+		</a>
+		<h3>Add new order:</h3>
+			<form id="update_orders" action="/orders" method="post">
+  				Customer ID: <input type="number" name="customerID"><br>
+				DateOrdered: <input type="date" name="dateOrdered"><br>
+				Date Delivered: <input type="date" name="dateDelivered"><br>
+				Total Price: <input type="text" step="0.01" min="0" name="totalPrice"><br>
+    			<input type="submit" value="Submit">
+ 			</form>
+		<br/>
     </div>
-
 	</form>
   </body>
 </html>
