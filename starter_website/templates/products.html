@@ -24,7 +24,7 @@
 		<li class="topbar"><a href="http://flip3.engr.oregonstate.edu:7777/orders">Orders</a></li>
 		<li class="topbar"><a href="http://flip3.engr.oregonstate.edu:7777/customers">Customers</a></li>
 		<li class="topbar"><a href="http://flip3.engr.oregonstate.edu:7777/stores">Stores</a></li>
-		<li class="topbar"><a href="http://flip3.engr.oregonstate.edu:7777/orderproducts">Order_Products</a></li>
+		<li class="topbar"><a href="http://flip3.engr.oregonstate.edu:7777/orderProducts">Order_Products</a></li>
 	</ul>
   </nav>
   <form>
@@ -58,8 +58,8 @@
 				  <td> {{ r[4] }}</td>
 				  <td> {{ r[5] }}</td>
 				  <td> {{ r[6] }}</td>
-				  <td> <input type='button' name='Update' value='Update' onclick="window.location = '/update_people/{{r[4]}}'"> </td>
-				  <td> <input type='button' name='Delete' value='Delete' onclick="window.location = '/delete_people/{{r[4]}}'"> </td>
+				  <td> <input type='button' name='Update' value='Update' onclick="window.location = '/updateProduct/{{r[0]}}'"> </td>
+				  <td> <input type='button' name='Delete' value='Delete' onclick="window.location = '/deleteProduct/{{r[0]}}'"> </td>
 				</tr>
 				{% endfor %}
 			  </tbody>

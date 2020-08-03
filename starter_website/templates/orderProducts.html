@@ -22,7 +22,7 @@
 		<li class="topbar"><a href="http://flip3.engr.oregonstate.edu:7777/orders">Orders</a></li>
 		<li class="topbar"><a href="http://flip3.engr.oregonstate.edu:7777/customers">Customers</a></li>
 		<li class="topbar"><a href="http://flip3.engr.oregonstate.edu:7777/stores">Stores</a></li>
-		<li class="topbar"><a href="http://flip3.engr.oregonstate.edu:7777/orderproducts">Order_Products</a></li>
+		<li class="topbar"><a href="http://flip3.engr.oregonstate.edu:7777/orderProducts">Order_Products</a></li>
     </ul>
   </nav>
 
@@ -36,29 +36,20 @@
   		<tr>
   		  <th>Order ID</th>
   		  <th>Customer ID</th>
-  		  <th>Edit</th>
+  		  <th>Update</th>
   		  <th>Delete</th>
   		</tr>
-  		<tr>
-  		  <td>1</td>
-  		  <td>2</td>
-  		  <td><button class="editBtn">Edit</button></td>
-  		  <td><button class="deleteBtn">X</button></td>
-  		</tr>
-
-  		<tr>
-  			<td>2</td>
-  			<td>1</td>
-  			<td><button class="editBtn">Edit</button></td>
-  			<td><button class="deleteBtn">X</button></td>
-  		</tr>
-
-  		<tr>
-  			<td>3</td>
-  		  <td>3</td>
-  		  <td><button class="editBtn">Edit</button></td>
-  		  <td><button class="deleteBtn">X</button></td>
-  		  </tr>
+		  <tbody>
+			{% for r in rows %}
+			<tr>
+			  <td> {{ r.0 }}</td>
+			  <td> {{ r[1] }}</td>
+			  <td> <input type='button' name='Update' value='Update' onclick="window.location = '/updateOrders/{{r[0]}}'"> </td>
+			  <td> <input type='button' name='Delete' value='Delete' onclick="window.location = '/deleteOrders/{{r[0]}}'"> </td>
+			</tr>
+			{% endfor %}
+		  </tbody>
+  		 
 
   	  </table>
     </div>

@@ -23,7 +23,7 @@
 		<li class="topbar"><a href="http://flip3.engr.oregonstate.edu:7777/orders">Orders</a></li>
 		<li class="topbar"><a href="http://flip3.engr.oregonstate.edu:7777/customers">Customers</a></li>
 		<li class="topbar"><a href="http://flip3.engr.oregonstate.edu:7777/stores">Stores</a></li>
-		<li class="topbar"><a href="http://flip3.engr.oregonstate.edu:7777/orderproducts">Order_Products</a></li>
+		<li class="topbar"><a href="http://flip3.engr.oregonstate.edu:7777/orderProducts">Order_Products</a></li>
 	</ul>
   </nav>
   <form>
@@ -35,7 +35,7 @@
     	<button type="button">Add Products</button><br><br>
 		</a>
 			<h3>Add new product:</h3>
-			<form id="update_products" action="/products" method="post">
+			<form id="update_products" action="/modifyProducts" method="post">
   				Product name: <input type="text" name="productName"><br>
 				Brand: <input type="text" name="brandName"><br>
 				Price: <input type="number" step="0.01" min="0" name="price"><br>

@@ -4,12 +4,11 @@ from db_connector.db_connector import connect_to_database, execute_query
 #create the web application
 webapp = Flask(__name__)
 
-#provide a route where requests on the web application can be addressed
-@webapp.route('/hello')
-#provide a view (fancy name for a function) which responds to any requests on this route
-def hello():
-    return "Welcome to my website brotha"
-
+@webapp.route('/')
+@webapp.route('/home')
+@webapp.route('/index.html')
+def index():
+    return render_template('index.html')
 
 @webapp.route('/products')
 def products():
@@ -37,6 +36,26 @@ def customers():
     result = execute_query(db_connection, query).fetchall()
     print(result)
     return render_template('customers.html', rows=result)
+
+@webapp.route('/stores')
+def stores():
+    print("Fetching and rendering stores webpage")
+    db_connection = connect_to_database()
+    query = "SELECT storeID, address, city, state, daysOpen, hours FROM Stores;"
+    result = execute_query(db_connection, query).fetchall()
+    print(result)
+    return render_template('stores.html', rows=result)
+
+
+
+@webapp.route('/orderProducts')
+def orderProducts():
+    print("Fetching and rendering orderProducts webpage")
+    db_connection = connect_to_database()
+    query = "SELECT orderID, customerID FROM Order_Products;"
+    result = execute_query(db_connection, query).fetchall()
+    print(result)
+    return render_template('orderProducts.html', rows=result)
 
 # Still can't figure out why adding a new product won't go through to backend
 @webapp.route('/modifyProducts', methods=['POST', 'GET'])
@@ -111,28 +130,32 @@ def modifyCustomers():
         return ('Order added!')
 
 
-########################################################################################################################
-# Need to implement the page itself, and the modify page following the above pattern, for each one below
-########################################################################################################################
-
-@webapp.route('/stores')
-def stores():
-    return render_template('stores.html')
-
-
-@webapp.route('/orderproducts')
-def orderProducts():
-    return render_template('orderProducts.html')
-
-
-@webapp.route('/modifystores')
+@webapp.route('/modifyStores', methods=['POST','GET'])
 def modifyStores():
-    return render_template('modifyStores.html')
+    db_connection = connect_to_database()
+    if request.method == 'GET':
+        query = 'SELECT storeID from Stores'
+        result = execute_query(db_connection, query).fetchall()
+        print(result)
+        return render_template('modifyStores.html', rows = result)
 
-@webapp.route('/')
-def index():
-    return render_template('index.html')
+    elif request.method == 'POST':
+        print("Add new store!")
+        address = request.form['address']
+        city = request.form['city']
+        state = request.form['state']
+        daysOpen = request.form['daysOpen']
+        hours = request.form['hours']
 
-@webapp.route('/home')
-def home():
-    return render_template('index.html')
+        query = 'INSERT INTO Stores (address, city, state, daysOpen, hours) VALUES (%s,%s,%s,%s,%s)'
+        data = (address, city, state, daysOpen, hours)
+        execute_query(db_connection, query, data)
+        return ('Store added!')
+
+@webapp.route('/deleteProduct/<int:id>')
+def deleteProducts(id):
+    db_connection = connect_to_database()
+    query = "DELETE FROM Products WHERE productID = %s"
+    data = (id,)
+    result = execute_query(db_connection, query, data)
+    return render_template('products.html', rows = result)

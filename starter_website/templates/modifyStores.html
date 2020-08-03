@@ -22,7 +22,7 @@
 		<li class="topbar"><a href="http://flip3.engr.oregonstate.edu:7777/orders">Orders</a></li>
 		<li class="topbar"><a href="http://flip3.engr.oregonstate.edu:7777/customers">Customers</a></li>
 		<li class="topbar"><a href="http://flip3.engr.oregonstate.edu:7777/stores">Stores</a></li>
-		<li class="topbar"><a href="http://flip3.engr.oregonstate.edu:7777/orderproducts">Order_Products</a></li>
+		<li class="topbar"><a href="http://flip3.engr.oregonstate.edu:7777/orderProducts">Order_Products</a></li>
 	</ul>
   </nav>
   <form>
@@ -30,23 +30,17 @@
   	<a href="http://flip3.engr.oregonstate.edu:7777/stores">
   	<button type="button">View Stores</button>
   	</a>
-  	<a href="http://flip3.engr.oregonstate.edu:7777/modifystores">
+  	<a href="http://flip3.engr.oregonstate.edu:7777/modifyStores">
   	<button type="button">Add Store</button><br><br>
   	</a>
-
-		<label for="storeID"class="storeID">Store ID:</label>
-		<input type="number" placeholder="1"name="storeID"><br>
-		<label for="address" class="address">Address:</label>
-		<input type="text" placeholder="125 Spooner St"name="address"><br>
-		<label for="city">City:</label>
-		<input type="text" placeholder="Portland" name="city"><br>
-		<label for="state">State:</label>
-		<input type="text" placeholder="Oregon"name="state"><br>
-		<label for="daysOpen">Days Open:</label>
-		<input type="text" placeholder="Monday-Sunday" name="daysOpen"><br>
-		<label for="hours">Hours:</label>
-		<input type="text" placeholder="10am-8pm" name="hours"><br>
-		<input type="submit" name="submit">
+	  <form id="modifyStores" action="/stores" method="post">
+		Address: <input type="text" name="address"><br>
+	  	City: <input type="text" name="city"><br>
+	  	State: <input type="text" name="state"><br>
+	  	Days Open: <input type="text" name="daysOpen"><br>
+	  	Hours: <input type="text" name="hours"><br>
+	  	<input type="submit" value="Submit">
+   </form>
 	</div>
 
 	</form>
