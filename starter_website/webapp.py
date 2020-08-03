@@ -4,6 +4,8 @@ from db_connector.db_connector import connect_to_database, execute_query
 #create the web application
 webapp = Flask(__name__)
 
+
+####################################### READ/VIEW FUNCTIONALITY ##############################################
 @webapp.route('/')
 @webapp.route('/home')
 @webapp.route('/index.html')
@@ -56,8 +58,8 @@ def orderProducts():
     result = execute_query(db_connection, query).fetchall()
     print(result)
     return render_template('orderProducts.html', rows=result)
-
-# Still can't figure out why adding a new product won't go through to backend
+####################################### END OF SELECT/READ FUNCTIONALITY ##############################################
+####################################### GET/POST FUNCTIONALITY ##############################################
 @webapp.route('/modifyProducts', methods=['POST', 'GET'])
 def modifyProducts():
     db_connection = connect_to_database()
@@ -66,20 +68,18 @@ def modifyProducts():
         result = execute_query(db_connection, query).fetchall()
         print(result)
         return render_template('modifyProducts.html', rows = result)
-
     elif request.method == 'POST':
-        print("Add new products!")
+        print("Add new product!")
         productName = request.form['productName']
         brandName = request.form['brandName']
         price = request.form['price']
         category = request.form['category']
         sale = request.form['sale']
         color = request.form['color']
-
         query = 'INSERT INTO Products (productName, brandName, price, category, sale, color) VALUES (%s,%s,%s,%s,%s,%s)'
         data = (productName, brandName, price, category, sale, color)
         execute_query(db_connection, query, data)
-        return ('Product added!');
+        return ('Product added!')
 
 @webapp.route('/modifyOrders', methods=['POST','GET'])
 def modifyOrders():
@@ -101,7 +101,6 @@ def modifyOrders():
         data = (customerID, dateOrdered, dateDelivered, totalPrice)
         execute_query(db_connection, query, data)
         return ('Order added!')
-
 
 @webapp.route('/modifyCustomers', methods=['POST','GET'])
 def modifyCustomers():
@@ -129,7 +128,6 @@ def modifyCustomers():
         execute_query(db_connection, query, data)
         return ('Order added!')
 
-
 @webapp.route('/modifyStores', methods=['POST','GET'])
 def modifyStores():
     db_connection = connect_to_database()
@@ -151,11 +149,67 @@ def modifyStores():
         data = (address, city, state, daysOpen, hours)
         execute_query(db_connection, query, data)
         return ('Store added!')
-
+####################################### END OF GET/POST FUNCTIONALITY ################################################
+####################################### ALL OF THE DELETE FUNCTIONALITY ##############################################
 @webapp.route('/deleteProduct/<int:id>')
-def deleteProducts(id):
+def deleteProduct(id):
     db_connection = connect_to_database()
     query = "DELETE FROM Products WHERE productID = %s"
     data = (id,)
     result = execute_query(db_connection, query, data)
-    return render_template('products.html', rows = result)
+    return (str(result.rowcount) + " row deleted")
+
+@webapp.route('/deleteOrder/<int:id>')
+def deleteOrder(id):
+    db_connection = connect_to_database()
+    query = "DELETE FROM Orders WHERE orderID = %s"
+    data = (id,)
+    result = execute_query(db_connection, query, data)
+    return (str(result.rowcount) + " row deleted")
+
+@webapp.route('/deleteCustomer/<int:id>')
+def deleteCustomer(id):
+    db_connection = connect_to_database()
+    query = "DELETE FROM Customers WHERE customerID = %s"
+    data = (id,)
+    result = execute_query(db_connection, query, data)
+    return (str(result.rowcount) + " row deleted")
+
+@webapp.route('/deleteStore/<int:id>')
+def deleteStore(id):
+    db_connection = connect_to_database()
+    query = "DELETE FROM Stores WHERE storeID = %s"
+    data = (id,)
+    result = execute_query(db_connection, query, data)
+    return (str(result.rowcount) + " row deleted")
+####################################### END OF DELETE FUNCTIONALITY##############################################################
+####################################### START OF UPDATE FUNCTIONALITY##############################################################
+# @webapp.route('/updateProduct/<int:id>', methods=['POST','GET'])
+# def updateProduct(id):
+#     print('In the function')
+#     db_connection = connect_to_database()
+#     #display existing data
+#     if request.method == 'GET':
+#         print('The GET request')
+#         product_query = 'SELECT productID, productName, brand, price, category, sale, color from Products WHERE id = %s'  % (id)
+#         product_result = execute_query(db_connection, product_query).fetchone()
+
+#         if product_result == None:
+#             return "No such person found!"
+
+#         return render_template('productUpdate.html', product = product_result)
+
+#     elif request.method == 'POST':
+#         print('The POST request')
+#         productID = request.form['productID']
+#         productName = request.form['productName']
+#         brandName = request.form['brandName']
+#         price = request.form['price']
+#         category = request.form['category']
+#         sale = request.form['sale']
+#         color = request.form['color']
+
+#         query = "UPDATE Products SET productName = %s, brandName = %s, price = %s, category = %s, sale = %s, color = %s WHERE id = %s"
+#         data = (productID, productName, brandName, price, category, sale, color)
+#         result = execute_query(db_connection, query, data)
+#         print(str(result.rowcount) + " row(s)
