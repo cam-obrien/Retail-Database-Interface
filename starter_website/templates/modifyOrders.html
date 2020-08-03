@@ -25,24 +25,15 @@
 			<li class="topbar"><a href="http://flip3.engr.oregonstate.edu:7777/orderProducts">Order_Products</a></li>
 		</ul>
 	</nav>
-  <form>
     <div class="modifyOrdersContainer">
-    	<a href="http://flip3.engr.oregonstate.edu:7777/orders">
-    	<button type="button">View Orders</button>
-    	</a>
-    	<a href="http://flip3.engr.oregonstate.edu:7777/modifyOrders">
-    	<button type="button">Add Orders</button><br><br>
-		</a>
-		<h3>Add new order:</h3>
-			<form id="update_orders" action="/orders" method="post">
-  				Customer ID: <input type="number" name="customerID"><br>
-				DateOrdered: <input type="date" name="dateOrdered"><br>
-				Date Delivered: <input type="date" name="dateDelivered"><br>
-				Total Price: <input type="text" step="0.01" min="0" name="totalPrice"><br>
-    			<input type="submit" value="Submit">
- 			</form>
+		<form action="/modifyOrders" method="post">
+  			Customer ID: <input type="number" name="customerID" required><br>
+			DateOrdered: <input type="date" name="dateOrdered" required><br>
+			Date Delivered: <input type="date" name="dateDelivered"><br>
+			Total Price: <input type="text" step="0.01" min="0" name="totalPrice" required><br>
+    		<input type="submit" value="Submit">
+ 		</form>
 		<br/>
     </div>
-	</form>
   </body>
 </html>

@@ -25,24 +25,16 @@
 		<li class="topbar"><a href="http://flip3.engr.oregonstate.edu:7777/orderProducts">Order_Products</a></li>
 	</ul>
   </nav>
-  <form>
-  <div class="modifyStoresContainer">
-  	<a href="http://flip3.engr.oregonstate.edu:7777/stores">
-  	<button type="button">View Stores</button>
-  	</a>
-  	<a href="http://flip3.engr.oregonstate.edu:7777/modifyStores">
-  	<button type="button">Add Store</button><br><br>
-  	</a>
-	  <form id="modifyStores" action="/stores" method="post">
-		Address: <input type="text" name="address"><br>
-	  	City: <input type="text" name="city"><br>
-	  	State: <input type="text" name="state"><br>
-	  	Days Open: <input type="text" name="daysOpen"><br>
-	  	Hours: <input type="text" name="hours"><br>
-	  	<input type="submit" value="Submit">
-   </form>
-	</div>
 
-	</form>
+  <div class="modifyStoresContainer">
+	  <form id="modifyStores" action="/modifyStores" method="post">
+		Address: <input type="text" name="address" required><br>
+	  	City: <input type="text" name="city" required><br>
+	  	State: <input type="text" name="state" required><br>
+	  	Days Open: <input type="text" name="daysOpen" required><br>
+	  	Hours: <input type="text" name="hours" required><br>
+	  	<input type="submit" value="Submit" required>
+   		</form>
+	</div>
   </body>
 </html>

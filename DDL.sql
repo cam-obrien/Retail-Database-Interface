@@ -86,7 +86,7 @@ CREATE TABLE Stores (
 	PRIMARY KEY (storeID)
 );
 
-INSERT INTO Stores (storeID, city, state, address, hours, daysOpen) VALUES (1, "125 Spooner St", "Portland", "Oregon", "Monday-Sunday", "10am-8pm");
+INSERT INTO Stores (storeID, address, city, state, daysOpen, hours) VALUES (1, "125 Spooner St", "Portland", "Oregon", "Monday-Sunday", "10am-8pm");
 
 ALTER TABLE Orders ADD FOREIGN KEY (customerID) REFERENCES Customers(customerID) ON UPDATE CASCADE ON DELETE CASCADE;
 ALTER TABLE Order_Products ADD FOREIGN KEY (orderID) REFERENCES Orders(orderID) ON UPDATE CASCADE ON DELETE CASCADE;

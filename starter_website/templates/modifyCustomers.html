@@ -26,19 +26,12 @@
 		<li class="topbar"><a href="http://flip3.engr.oregonstate.edu:7777/orderProducts">Order_Products</a></li>
     </ul>
   </nav>
-  <form>
     <div class="modifyCustomersContainer">
-    	<a href="http://flip3.engr.oregonstate.edu:7777/customers">
-    	<button type="button">View Customers</button>
-    	</a>
-    	<a href="http://flip3.engr.oregonstate.edu:7777/modifycustomers">
-    	<button type="button">Add Customer</button><br><br>
-    	</a>
-		<form id="update_customers" action="/customers" method="post">
-			Email: <input type="text" name="email"><br>
-		  	First Name: <input type="text" name="firstName"><br>
-		  	Last Name: <input type="text" name="lastName"><br>
-			Address: <input type="text" name="address"><br>
+		<form id="update_customers" action="/modifyCustomers" method="post">
+			Email: <input type="text" name="email" required><br>
+		  	First Name: <input type="text" name="firstName" required><br>
+		  	Last Name: <input type="text" name="lastName" required><br>
+			Address: <input type="text" name="address" required><br>
 			Date of Birth: <input type="date" name="dob"><br>
 			Phone Number: <input type="text" name="phone"><br>
 			City: <input type="text" name="city"><br>
@@ -46,37 +39,7 @@
 			Zipcode: <input type="text" name="zipcode"><br>
 		  <input type="submit" value="Submit">
 	   </form>
-  	<br/>
-		
-		
-		
-		
-		
-		
-		<!-- <label for="customerID" class="customerID">Customer ID:</label>
-    		<input type="number" placeholder="3"name="customerID"><br>
-    		<label for="orderID"class="orderID">Order ID:</label>
-    		<input type="number" placeholder="1"name="orderID"><br>
-    		<label for="email">Email:</label>
-    		<input type="email" placeholder="samplemail@gmail.com" name="email"><br>
-    		<label for="firstName">First name:</label>
-    		<input type="text" placeholder="Johnny"name="firstName"><br>
-    		<label for="lastName">Last name:</label>
-    		<input type="text" placeholder="Ripper" name="lastName"><br>
-    		<label for="address">Address:</label>
-    		<input type="text" placeholder="125 NW Durham Rd"><br>
-    		<label for="dob">Date of Birth:</label>
-    		<input type="date" placeholder="02/14/1990"><br>
-    		<label for="phone">Phone Number:</label>
-    		<input type="text" placeholder="9714201958"><br>
-    		<label for="city">City:</label>
-    		<input type="text" placeholder="Bothell"><br>
-    		<label for="state">State:</label>
-    		<input type="text" placeholder="Washington"><br>
-    		<label for="zipcode">Zipcode:</label>
-    		<input type="text" placeholder="97330"><br>
-    		<input type="submit" name="submit"> -->
-		</div>
-	</form>
+  		<br/>
+	</div>
   </body>
 </html>

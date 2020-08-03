@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, url_for
 from flask import request, redirect
 from db_connector.db_connector import connect_to_database, execute_query
 #create the web application
@@ -48,13 +48,11 @@ def stores():
     print(result)
     return render_template('stores.html', rows=result)
 
-
-
 @webapp.route('/orderProducts')
 def orderProducts():
     print("Fetching and rendering orderProducts webpage")
     db_connection = connect_to_database()
-    query = "SELECT orderID, customerID FROM Order_Products;"
+    query = "SELECT orderID, customerID FROM Orders;"
     result = execute_query(db_connection, query).fetchall()
     print(result)
     return render_template('orderProducts.html', rows=result)
@@ -79,7 +77,7 @@ def modifyProducts():
         query = 'INSERT INTO Products (productName, brandName, price, category, sale, color) VALUES (%s,%s,%s,%s,%s,%s)'
         data = (productName, brandName, price, category, sale, color)
         execute_query(db_connection, query, data)
-        return ('Product added!')
+        return redirect(url_for('products'))
 
 @webapp.route('/modifyOrders', methods=['POST','GET'])
 def modifyOrders():
@@ -100,7 +98,7 @@ def modifyOrders():
         query = 'INSERT INTO Orders (customerID, dateOrdered, dateDelivered, totalPrice) VALUES (%s,%s,%s,%s)'
         data = (customerID, dateOrdered, dateDelivered, totalPrice)
         execute_query(db_connection, query, data)
-        return ('Order added!')
+        return redirect(url_for('orders'))
 
 @webapp.route('/modifyCustomers', methods=['POST','GET'])
 def modifyCustomers():
@@ -112,7 +110,7 @@ def modifyCustomers():
         return render_template('modifyCustomers.html', rows = result)
 
     elif request.method == 'POST':
-        print("Add new order!")
+        print("Add new customer")
         email = request.form['email']
         firstName = request.form['firstName']
         lastName = request.form['lastName']
@@ -126,7 +124,7 @@ def modifyCustomers():
         query = 'INSERT INTO Customers (email, firstName, lastName, address, dob, phone, city, state, zipcode) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s)'
         data = (email, firstName, lastName, address, dob, phone, city, state, zipcode)
         execute_query(db_connection, query, data)
-        return ('Order added!')
+        return redirect(url_for('customers'))
 
 @webapp.route('/modifyStores', methods=['POST','GET'])
 def modifyStores():
@@ -148,7 +146,7 @@ def modifyStores():
         query = 'INSERT INTO Stores (address, city, state, daysOpen, hours) VALUES (%s,%s,%s,%s,%s)'
         data = (address, city, state, daysOpen, hours)
         execute_query(db_connection, query, data)
-        return ('Store added!')
+        return redirect(url_for('stores'))
 ####################################### END OF GET/POST FUNCTIONALITY ################################################
 ####################################### ALL OF THE DELETE FUNCTIONALITY ##############################################
 @webapp.route('/deleteProduct/<int:id>')
@@ -157,7 +155,7 @@ def deleteProduct(id):
     query = "DELETE FROM Products WHERE productID = %s"
     data = (id,)
     result = execute_query(db_connection, query, data)
-    return (str(result.rowcount) + " row deleted")
+    return redirect(url_for('products'))
 
 @webapp.route('/deleteOrder/<int:id>')
 def deleteOrder(id):
@@ -165,7 +163,7 @@ def deleteOrder(id):
     query = "DELETE FROM Orders WHERE orderID = %s"
     data = (id,)
     result = execute_query(db_connection, query, data)
-    return (str(result.rowcount) + " row deleted")
+    return redirect(url_for('orders'))
 
 @webapp.route('/deleteCustomer/<int:id>')
 def deleteCustomer(id):
@@ -173,7 +171,7 @@ def deleteCustomer(id):
     query = "DELETE FROM Customers WHERE customerID = %s"
     data = (id,)
     result = execute_query(db_connection, query, data)
-    return (str(result.rowcount) + " row deleted")
+    return redirect(url_for('customers'))
 
 @webapp.route('/deleteStore/<int:id>')
 def deleteStore(id):
@@ -181,7 +179,16 @@ def deleteStore(id):
     query = "DELETE FROM Stores WHERE storeID = %s"
     data = (id,)
     result = execute_query(db_connection, query, data)
-    return (str(result.rowcount) + " row deleted")
+    return redirect(url_for('stores'))
+
+
+@webapp.route('/deleteOrders/<int:id>')
+def deleteOrders(id):
+    db_connection = connect_to_database()
+    query = "DELETE FROM Orders WHERE orderID = %s"
+    data = (id,)
+    result = execute_query(db_connection, query, data)
+    return redirect(url_for('orderProducts'))
 ####################################### END OF DELETE FUNCTIONALITY##############################################################
 ####################################### START OF UPDATE FUNCTIONALITY##############################################################
 # @webapp.route('/updateProduct/<int:id>', methods=['POST','GET'])
@@ -212,4 +219,6 @@ def deleteStore(id):
 #         query = "UPDATE Products SET productName = %s, brandName = %s, price = %s, category = %s, sale = %s, color = %s WHERE id = %s"
 #         data = (productID, productName, brandName, price, category, sale, color)
 #         result = execute_query(db_connection, query, data)
-#         print(str(result.rowcount) + " row(s)
+#         print(str(result.rowcount) + " row(s) updated")
+
+#         return redirect('/products')
