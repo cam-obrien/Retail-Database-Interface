@@ -221,3 +221,32 @@ def updateProduct(id):
         data = (productName, brandName, price, category, sale, color, productID)
         result = execute_query(db_connection, query, data)
         return redirect(url_for('products'))
+
+
+@webapp.route('/updateOrder/<int:id>', methods=['POST','GET'])
+def updateOrder(id):
+    print('In the function')
+    db_connection = connect_to_database()
+    #display existing data
+    if request.method == 'GET':
+        print('The GET request')
+        order_query = 'SELECT orderID, customerID, dateOrdered, dateDelivered, totalPrice from Orders WHERE orderID = %s'  % (id)
+        order_result = execute_query(db_connection, order_query).fetchone()
+
+        if order_result == None:
+            return "No such person found!"
+
+        return render_template('updateOrder.html', order = order_result)
+    
+    elif request.method == 'POST':
+        print('The POST request')
+        orderID = request.form['orderID']
+        customerID = request.form['customerID']
+        dateOrdered = request.form['dateOrdered']
+        dateDelivered = request.form['dateDelivered']
+        totalPrice = request.form['totalPrice']
+
+        query = "UPDATE Orders SET customerID = %s, dateOrdered = %s, dateDelivered = %s, totalPrice = %s WHERE orderID = %s"
+        data = (customerID, dateOrdered, dateDelivered, totalPrice, orderID)
+        result = execute_query(db_connection, query, data)
+        return redirect(url_for('orders'))
