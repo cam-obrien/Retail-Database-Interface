@@ -147,6 +147,24 @@ def modifyStores():
         data = (address, city, state, daysOpen, hours)
         execute_query(db_connection, query, data)
         return redirect(url_for('stores'))
+
+# @webapp.route('/modifyOrderProducts', methods=['POST','GET'])
+# def modifyOrderProducts():
+#     db_connection = connect_to_database()
+#     if request.method == 'GET':
+#         query = 'SELECT orderID customerID from Orders'
+#         result = execute_query(db_connection, query).fetchall()
+#         print(result)
+#         return render_template('modifyOrderProducts.html', rows = result)
+
+#     elif request.method == 'POST':
+#         orderID = request.form['orderID']
+#         customerID = request.form['customerID']
+
+#         query = 'INSERT INTO Order_Products (orderID, customerID) VALUES (%s,%s)'
+#         data = (orderID, customerID)
+#         execute_query(db_connection, query, data)
+#         return redirect(url_for('orderProducts'))
 ####################################### END OF GET/POST FUNCTIONALITY ################################################
 ####################################### ALL OF THE DELETE FUNCTIONALITY ##############################################
 @webapp.route('/deleteProduct/<int:id>')
@@ -312,3 +330,29 @@ def updateStore(id):
         data = (address, city, state, daysOpen, hours, storeID)
         result = execute_query(db_connection, query, data)
         return redirect(url_for('stores'))
+
+
+@webapp.route('/updateOrders/<int:id>', methods=['POST','GET'])
+def updateOrders(id):
+    print('In the function')
+    db_connection = connect_to_database()
+    #display existing data
+    if request.method == 'GET':
+        print('The GET request')
+        orders_query = 'SELECT orderID, customerID FROM Orders WHERE orderID = %s'  % (id)
+        orders_result = execute_query(db_connection, orders_query).fetchone()
+
+        if orders_result == None:
+            return "No order found!"
+
+        return render_template('updateOrders.html', orders = orders_result)
+    
+    elif request.method == 'POST':
+        print('The POST request')
+        orderID = request.form['orderID']
+        customerID = request.form['customerID']
+
+        query = "UPDATE Order_Products SET customerID = %s WHERE orderID = %s"
+        data = (customerID, orderID)
+        result = execute_query(db_connection, query, data)
+        return redirect(url_for('orderProducts'))
