@@ -339,7 +339,7 @@ def updateOrders(id):
     #display existing data
     if request.method == 'GET':
         print('The GET request')
-        orders_query = 'SELECT orderID, customerID FROM Orders WHERE orderID = %s'  % (id)
+        orders_query = 'SELECT orderID, customerID FROM Order_Products WHERE orderID = %s'  % (id)
         orders_result = execute_query(db_connection, orders_query).fetchone()
 
         if orders_result == None:
