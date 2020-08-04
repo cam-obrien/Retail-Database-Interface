@@ -191,34 +191,33 @@ def deleteOrders(id):
     return redirect(url_for('orderProducts'))
 ####################################### END OF DELETE FUNCTIONALITY##############################################################
 ####################################### START OF UPDATE FUNCTIONALITY##############################################################
-# @webapp.route('/updateProduct/<int:id>', methods=['POST','GET'])
-# def updateProduct(id):
-#     print('In the function')
-#     db_connection = connect_to_database()
-#     #display existing data
-#     if request.method == 'GET':
-#         print('The GET request')
-#         product_query = 'SELECT productID, productName, brand, price, category, sale, color from Products WHERE id = %s'  % (id)
-#         product_result = execute_query(db_connection, product_query).fetchone()
+@webapp.route('/updateProduct/<int:id>', methods=['POST','GET'])
+def updateProduct(id):
+    print('In the function')
+    db_connection = connect_to_database()
+    #display existing data
+    if request.method == 'GET':
+        print('The GET request')
+        product_query = 'SELECT productID, productName, brandName, price, category, sale, color from Products WHERE productID = %s'  % (id)
+        product_result = execute_query(db_connection, product_query).fetchone()
 
-#         if product_result == None:
-#             return "No such person found!"
+        if product_result == None:
+            return "No such person found!"
 
-#         return render_template('productUpdate.html', product = product_result)
+        #return redirect(url_for('orderProducts'))
+        return render_template('updateProduct.html', product = product_result)
+    
+    elif request.method == 'POST':
+        print('The POST request')
+        productID = request.form['productID']
+        productName = request.form['productName']
+        brandName = request.form['brandName']
+        price = request.form['price']
+        category = request.form['category']
+        sale = request.form['sale']
+        color = request.form['color']
 
-#     elif request.method == 'POST':
-#         print('The POST request')
-#         productID = request.form['productID']
-#         productName = request.form['productName']
-#         brandName = request.form['brandName']
-#         price = request.form['price']
-#         category = request.form['category']
-#         sale = request.form['sale']
-#         color = request.form['color']
-
-#         query = "UPDATE Products SET productName = %s, brandName = %s, price = %s, category = %s, sale = %s, color = %s WHERE id = %s"
-#         data = (productID, productName, brandName, price, category, sale, color)
-#         result = execute_query(db_connection, query, data)
-#         print(str(result.rowcount) + " row(s) updated")
-
-#         return redirect('/products')
+        query = "UPDATE Products SET productName = %s, brandName = %s, price = %s, category = %s, sale = %s, color = %s WHERE productID = %s"
+        data = (productName, brandName, price, category, sale, color, productID)
+        result = execute_query(db_connection, query, data)
+        return redirect(url_for('products'))
