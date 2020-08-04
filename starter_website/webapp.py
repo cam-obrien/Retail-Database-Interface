@@ -202,9 +202,8 @@ def updateProduct(id):
         product_result = execute_query(db_connection, product_query).fetchone()
 
         if product_result == None:
-            return "No such person found!"
+            return "No product found!"
 
-        #return redirect(url_for('orderProducts'))
         return render_template('updateProduct.html', product = product_result)
     
     elif request.method == 'POST':
@@ -234,7 +233,7 @@ def updateOrder(id):
         order_result = execute_query(db_connection, order_query).fetchone()
 
         if order_result == None:
-            return "No such person found!"
+            return "No order found!"
 
         return render_template('updateOrder.html', order = order_result)
     
@@ -250,3 +249,66 @@ def updateOrder(id):
         data = (customerID, dateOrdered, dateDelivered, totalPrice, orderID)
         result = execute_query(db_connection, query, data)
         return redirect(url_for('orders'))
+
+
+@webapp.route('/updateCustomer/<int:id>', methods=['POST','GET'])
+def updateCustomer(id):
+    print('In the function')
+    db_connection = connect_to_database()
+    #display existing data
+    if request.method == 'GET':
+        print('The GET request')
+        customer_query = 'SELECT customerID, email, firstName, lastName, address, dob, phone, city, state, zipcode from Customers WHERE customerID = %s'  % (id)
+        customer_result = execute_query(db_connection, customer_query).fetchone()
+
+        if customer_result == None:
+            return "No customer found!"
+
+        return render_template('updateCustomer.html', customer = customer_result)
+    
+    elif request.method == 'POST':
+        print('The POST request')
+        customerID = request.form['customerID']
+        email = request.form['email']
+        firstName = request.form['firstName']
+        lastName = request.form['lastName']
+        address = request.form['address']
+        dob = request.form['dob']
+        phone = request.form['phone']
+        city = request.form['city']
+        state = request.form['state']
+        zipcode = request.form['zipcode']
+
+        query = "UPDATE Customers SET email = %s, firstName = %s, lastName = %s, address = %s, dob = %s, phone = %s, city = %s, state = %s, zipcode = %s WHERE customerID = %s"
+        data = (email, firstName, lastName, address, dob, phone, city, state, zipcode, customerID)
+        result = execute_query(db_connection, query, data)
+        return redirect(url_for('customers'))
+
+@webapp.route('/updateStore/<int:id>', methods=['POST','GET'])
+def updateStore(id):
+    print('In the function')
+    db_connection = connect_to_database()
+    #display existing data
+    if request.method == 'GET':
+        print('The GET request')
+        store_query = 'SELECT storeID, address, city, state, daysOpen, hours FROM Stores WHERE storeID = %s'  % (id)
+        store_result = execute_query(db_connection, store_query).fetchone()
+
+        if store_result == None:
+            return "No such person found!"
+
+        return render_template('updateStore.html', store = store_result)
+    
+    elif request.method == 'POST':
+        print('The POST request')
+        storeID = request.form['storeID']
+        address= request.form['address']
+        city = request.form['city']
+        state = request.form['state']
+        daysOpen = request.form['daysOpen']
+        hours = request.form['hours']
+
+        query = "UPDATE Stores SET address = %s, city = %s, state = %s, daysOpen = %s, hours = %s WHERE storeID = %s"
+        data = (address, city, state, daysOpen, hours, storeID)
+        result = execute_query(db_connection, query, data)
+        return redirect(url_for('stores'))
