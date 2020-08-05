@@ -52,12 +52,10 @@ def stores():
 def orderProducts():
     print("Fetching and rendering orderProducts webpage")
     db_connection = connect_to_database()
-    query = "SELECT orderID FROM Orders;"
+    query = "SELECT orderID, productID FROM Orders;"
     result = execute_query(db_connection, query).fetchall()
 
-    product_query = "SELECT productID FROM Products;"
-    product_results = execute_query(db_connection, product_query).fetchall()
-    return render_template('orderProducts.html', rows=result, products = product_results)
+    return render_template('orderProducts.html', rows=result)
 ####################################### END OF SELECT/READ FUNCTIONALITY ##############################################
 ####################################### GET/POST FUNCTIONALITY ##############################################
 @webapp.route('/modifyProducts', methods=['POST', 'GET'])
