@@ -85,7 +85,7 @@ def modifyProducts():
 def modifyOrders():
     db_connection = connect_to_database()
     if request.method == 'GET':
-        query = 'SELECT orderID, customerID, dateOrdered, dateDelivered, totalPrice from Orders'
+        query = 'SELECT orderID, customerID, productID, dateOrdered, dateDelivered, totalPrice from Orders'
         result = execute_query(db_connection, query).fetchall()
         print(result)
         return render_template('modifyOrders.html', rows = result)
@@ -93,12 +93,13 @@ def modifyOrders():
     elif request.method == 'POST':
         print("Add new order!")
         customerID = request.form['customerID']
+        productID = request.form['productID']
         dateOrdered = request.form['dateOrdered']
         dateDelivered = request.form['dateDelivered']
         totalPrice = request.form['totalPrice']
 
-        query = 'INSERT INTO Orders (customerID, dateOrdered, dateDelivered, totalPrice) VALUES (%s,%s,%s,%s)'
-        data = (customerID, dateOrdered, dateDelivered, totalPrice)
+        query = 'INSERT INTO Orders (customerID, productID, dateOrdered, dateDelivered, totalPrice) VALUES (%s,%s,%s,%s,%s)'
+        data = (customerID, productID, dateOrdered, dateDelivered, totalPrice)
         execute_query(db_connection, query, data)
         return redirect(url_for('orders'))
 
