@@ -25,7 +25,7 @@ def products():
 def orders():
     print("Fetching and rendering orders webpage")
     db_connection = connect_to_database()
-    query = "SELECT orderID, customerID, dateOrdered, dateDelivered, totalPrice FROM Orders;"
+    query = "SELECT orderID, customerID, productID, dateOrdered, dateDelivered, totalPrice FROM Orders;"
     result = execute_query(db_connection, query).fetchall()
     print(result)
     return render_template('orders.html', rows=result)
@@ -52,10 +52,12 @@ def stores():
 def orderProducts():
     print("Fetching and rendering orderProducts webpage")
     db_connection = connect_to_database()
-    query = "SELECT orderID, customerID FROM Orders;"
+    query = "SELECT orderID FROM Orders;"
     result = execute_query(db_connection, query).fetchall()
-    print(result)
-    return render_template('orderProducts.html', rows=result)
+
+    product_query = "SELECT productID FROM Products;"
+    product_results = execute_query(db_connection, product_query).fetchall()
+    return render_template('orderProducts.html', rows=result, products = product_results)
 ####################################### END OF SELECT/READ FUNCTIONALITY ##############################################
 ####################################### GET/POST FUNCTIONALITY ##############################################
 @webapp.route('/modifyProducts', methods=['POST', 'GET'])
@@ -148,23 +150,6 @@ def modifyStores():
         execute_query(db_connection, query, data)
         return redirect(url_for('stores'))
 
-# @webapp.route('/modifyOrderProducts', methods=['POST','GET'])
-# def modifyOrderProducts():
-#     db_connection = connect_to_database()
-#     if request.method == 'GET':
-#         query = 'SELECT orderID customerID from Orders'
-#         result = execute_query(db_connection, query).fetchall()
-#         print(result)
-#         return render_template('modifyOrderProducts.html', rows = result)
-
-#     elif request.method == 'POST':
-#         orderID = request.form['orderID']
-#         customerID = request.form['customerID']
-
-#         query = 'INSERT INTO Order_Products (orderID, customerID) VALUES (%s,%s)'
-#         data = (orderID, customerID)
-#         execute_query(db_connection, query, data)
-#         return redirect(url_for('orderProducts'))
 ####################################### END OF GET/POST FUNCTIONALITY ################################################
 ####################################### ALL OF THE DELETE FUNCTIONALITY ##############################################
 @webapp.route('/deleteProduct/<int:id>')
@@ -339,7 +324,7 @@ def updateOrders(id):
     #display existing data
     if request.method == 'GET':
         print('The GET request')
-        orders_query = 'SELECT orderID, customerID FROM Order_Products WHERE orderID = %s'  % (id)
+        orders_query = 'SELECT orderID, productID FROM Orders WHERE orderID = %s'  % (id)
         orders_result = execute_query(db_connection, orders_query).fetchone()
 
         if orders_result == None:
@@ -350,9 +335,9 @@ def updateOrders(id):
     elif request.method == 'POST':
         print('The POST request')
         orderID = request.form['orderID']
-        customerID = request.form['customerID']
+        productID = request.form['productID']
 
-        query = "UPDATE Order_Products SET customerID = %s WHERE orderID = %s"
+        query = "UPDATE Orders SET productID = %s WHERE orderID = %s"
         data = (customerID, orderID)
         result = execute_query(db_connection, query, data)
         return redirect(url_for('orderProducts'))

@@ -1,5 +1,3 @@
-SET FOREIGN_KEY_CHECKS = 0;
-
 DROP TABLE IF EXISTS Customers;
 CREATE TABLE Customers (
 	customerID INT NOT NULL AUTO_INCREMENT,
@@ -29,32 +27,31 @@ VALUES (3, "tanzman@gmail.com", "Johnathan", "Tanz", "190 SE Yardsale Ln", "1998
 DROP TABLE IF EXISTS Order_Products;
 CREATE TABLE Order_Products (
 	orderID INT NOT NULL,
-	customerID INT NOT NULL
+	productID INT NOT NULL,
+	FOREIGN KEY (orderID) REFERENCES Orders(orderID),
+	FOREIGN KEY (productID) REFERENCES Products(productID)
 );
-
-INSERT INTO Order_Products (orderID, customerID) VALUES (1, 2);
-INSERT INTO Order_Products (orderID, customerID) VALUES (2, 1);
-INSERT INTO Order_Products (orderID, customerID) VALUES (3, 3);
 
 DROP TABLE IF EXISTS Orders;
 CREATE TABLE Orders (
 	orderID INT NOT NULL AUTO_INCREMENT,
 	customerID INT,
+	productID INT NOT NULL,
 	dateOrdered DATE NOT NULL,
 	dateDelivered DATE NOT NULL,
 	totalPrice decimal(10,2) NOT NULL,
-	PRIMARY KEY (orderID)
+	PRIMARY KEY (orderID),
+	FOREIGN KEY (productID) REFERENCES Products(productID)
 );
 
-INSERT INTO Orders (orderID, customerID, dateOrdered, dateDelivered, totalPrice)
-VALUES (1, 2, "2020/06/29", "2020/07/02", 204.99);
+INSERT INTO Orders (orderID, customerID, productID, dateOrdered, dateDelivered, totalPrice)
+VALUES (1, 2, 2, "2020/06/29", "2020/07/02", 204.99);
 
-INSERT INTO Orders (orderID, customerID, dateOrdered, dateDelivered, totalPrice)
-VALUES (2, 1, "2020/07/03", "2020/07/06", 109.99);
+INSERT INTO Orders (orderID, customerID, productID, dateOrdered, dateDelivered, totalPrice)
+VALUES (2, 1, 3, "2020/07/03", "2020/07/06", 109.99);
 
-INSERT INTO Orders (orderID, customerID, dateOrdered, dateDelivered, totalPrice)
-VALUES (3, 3, "2020/07/08", "2020/07/13", 204.99);
-
+INSERT INTO Orders (orderID, customerID, productID, dateOrdered, dateDelivered, totalPrice)
+VALUES (3, 3, 1, "2020/07/08", "2020/07/13", 204.99);
 
 
 DROP TABLE IF EXISTS Products;
@@ -87,10 +84,3 @@ CREATE TABLE Stores (
 );
 
 INSERT INTO Stores (storeID, address, city, state, daysOpen, hours) VALUES (1, "125 Spooner St", "Portland", "Oregon", "Monday-Sunday", "10am-8pm");
-
-ALTER TABLE Orders ADD FOREIGN KEY (customerID) REFERENCES Customers(customerID) ON UPDATE CASCADE ON DELETE CASCADE;
-ALTER TABLE Order_Products ADD FOREIGN KEY (orderID) REFERENCES Orders(orderID) ON UPDATE CASCADE ON DELETE CASCADE;
-ALTER TABLE Order_Products ADD FOREIGN KEY (customerID) REFERENCES Customers(customerID) ON UPDATE CASCADE ON DELETE CASCADE;
-
-
-SET FOREIGN_KEY_CHECKS = 1;
