@@ -339,6 +339,6 @@ def updateOrders(id):
         productID = request.form['productID']
 
         query = "UPDATE Orders SET productID = %s WHERE orderID = %s"
-        data = (customerID, orderID)
+        data = (productID, orderID)
         result = execute_query(db_connection, query, data)
         return redirect(url_for('orderProducts'))
