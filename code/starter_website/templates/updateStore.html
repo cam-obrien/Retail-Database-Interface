@@ -7,7 +7,7 @@
 		<!-- Bootstrap CSS -->
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 		<link rel="stylesheet" href="/static/styles.css">
-		<title>Orders Page</title>
+		<title>Stores Page</title>
 		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" ></script>
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" ></script>
@@ -15,7 +15,7 @@
 	
 	  <body>
 	
-		<header>Orders</header>
+		<header>Stores</header>
 	
 	  <nav class="topbars">
 		<ul>
@@ -27,14 +27,14 @@
 			<li class="topbar"><a href="http://flip3.engr.oregonstate.edu:7777/orderProducts">Order_Products</a></li>
 		</ul>
 	  </nav>
-		<div class="ordersContainer">
-			<form action="/updateOrder/{{order[0]}}" method="post">
-				Order ID: <input name="orderID" value = "{{ order[0] }}"><br>
-				Customer ID: <input type="text" name="customerID" value = "{{ order[1] }}"><br>
-				Product ID: <input type="text" name="productID" value = "{{ order[2] }}"><br>
-				Date Ordered: <input type="text" name="dateOrdered" value = "{{ order[3] }}"><br>
-				Date Delivered: <input type="text" name="dateDelivered" value = "{{ order[4] }}"><br>
-				Total Price: <input type="text" name="totalPrice" value = "{{ order[5] }}"><br>
+		<div class="storesContainer">
+			<form action="/updateStore/{{store[0]}}" method="post">
+				Store ID: <input name="storeID" value = "{{ store[0] }}"><br>
+				Address: <input type="text" name="address" value = "{{ store[1] }}"><br>
+				City: <input type="text" name="city" value = "{{ store[2] }}"><br>
+				State: <input type="text" name="state" value = "{{ store[3] }}"><br>
+				Days Open: <input type="text" name="daysOpen" value = "{{ store[4] }}"><br>
+				Hours: <input type="text" name="hours" value = "{{ store[5] }}"><br>
 				<input type="submit" value="Submit">
 			</form>
 		</div>

@@ -7,7 +7,7 @@
 		<!-- Bootstrap CSS -->
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 		<link rel="stylesheet" href="/static/styles.css">
-		<title>Orders Page</title>
+		<title>Customers Page</title>
 		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" ></script>
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" ></script>
@@ -15,7 +15,7 @@
 	
 	  <body>
 	
-		<header>Orders</header>
+		<header>Customers</header>
 	
 	  <nav class="topbars">
 		<ul>
@@ -27,14 +27,18 @@
 			<li class="topbar"><a href="http://flip3.engr.oregonstate.edu:7777/orderProducts">Order_Products</a></li>
 		</ul>
 	  </nav>
-		<div class="ordersContainer">
-			<form action="/updateOrder/{{order[0]}}" method="post">
-				Order ID: <input name="orderID" value = "{{ order[0] }}"><br>
-				Customer ID: <input type="text" name="customerID" value = "{{ order[1] }}"><br>
-				Product ID: <input type="text" name="productID" value = "{{ order[2] }}"><br>
-				Date Ordered: <input type="text" name="dateOrdered" value = "{{ order[3] }}"><br>
-				Date Delivered: <input type="text" name="dateDelivered" value = "{{ order[4] }}"><br>
-				Total Price: <input type="text" name="totalPrice" value = "{{ order[5] }}"><br>
+		<div class="customersContainer">
+			<form action="/updateCustomer/{{customer[0]}}" method="post">
+				Customer ID: <input name="customerID" value = "{{ customer[0] }}"><br>
+				Email: <input type="text" name="email" value = "{{ customer[1] }}"><br>
+				First Name: <input type="text" name="firstName" value = "{{ customer[2] }}"><br>
+				Last Name: <input type="text" name="lastName" value = "{{ customer[3] }}"><br>
+				Address: <input type="text" name="address" value = "{{ customer[4] }}"><br>
+				Date of Birth: <input type="date" name="dob" value = "{{ customer[5] }}"><br>
+				Phone Number: <input type="text" name="phone" value = "{{ customer[6] }}"><br>
+				City: <input type="text" name="city" value = "{{ customer[7] }}"><br>
+				State: <input type="text" name="state" value = "{{ customer[8] }}"><br>
+				Zipcode: <input type="text" name="zipcode" value = "{{ customer[9] }}"><br>
 				<input type="submit" value="Submit">
 			</form>
 		</div>

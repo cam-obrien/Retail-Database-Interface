@@ -7,14 +7,15 @@
     <!-- Bootstrap CSS -->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 	<link rel="stylesheet" href="static/styles.css">
-    <title>Order_Products Page</title>
-  </head>
-  <body>
-    <header>Order_Products</header>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+	<title>Customers Page</title>
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" ></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" ></script>
+  </head>
 
+  <body>
+
+	<header>Customers</header>
   <nav class="topbars">
     <ul>
 		<li class="topbar"><a href="http://flip3.engr.oregonstate.edu:7777/home">Home</a></li>
@@ -25,36 +26,20 @@
 		<li class="topbar"><a href="http://flip3.engr.oregonstate.edu:7777/orderProducts">Order_Products</a></li>
     </ul>
   </nav>
-
-    <div class="orderProductsContainer">
-		  <form class="OPSearch" method="post">
-			<input type="text" placeholder="Find product id from order ID" name="search" style="width: 250px; height: 30px">
-		   		<button type="submit"style="width: 100px; height: 30px">Submit
-		   		</button>
-	   		</form>
-		
-	
-  	<table style="width:60%;margin-left:auto;margin-right:auto">
-  		<tr>
-  		  <th>Order ID</th>
-  		  <th>Product ID</th>
-  		  <th>Update</th>
-  		  <th>Delete</th>
-  		</tr>
-		  <tbody>
-			{% for r in rows %}
-			<tr>
-			  <td> {{ r.0 }}</td>
-			  <td> {{ r[1] }}</td>
-			  <td> <input type='button' name='Update' value='Update' onclick="window.location = '/updateOrders/{{r[0]}}'"> </td>
-			  <td> <input type='button' name='Delete' value='Delete' onclick="window.location = '/deleteOrders/{{r[0]}}'"> </td>
-			</tr>
-			{% endfor %}
-
-		  </tbody>
-  	  </table>
-    </div>
-  </form>
-
+    <div class="modifyCustomersContainer">
+		<form id="update_customers" action="/modifyCustomers" method="post">
+			Email: <input type="text" name="email" required><br>
+		  	First Name: <input type="text" name="firstName" required><br>
+		  	Last Name: <input type="text" name="lastName" required><br>
+			Address: <input type="text" name="address" required><br>
+			Date of Birth: <input type="date" name="dob"><br>
+			Phone Number: <input type="text" name="phone"><br>
+			City: <input type="text" name="city"><br>
+			State: <input type="text" name="state"><br>
+			Zipcode: <input type="text" name="zipcode"><br>
+		  <input type="submit" value="Submit">
+	   </form>
+  		<br/>
+	</div>
   </body>
 </html>

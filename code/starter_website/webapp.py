@@ -56,7 +56,6 @@ def orderProducts():
     result = execute_query(db_connection, query).fetchall()
 
     return render_template('orderProducts.html', rows=result)
- 
 ####################################### END OF SELECT/READ FUNCTIONALITY ##############################################
 ####################################### GET/POST FUNCTIONALITY ##############################################
 @webapp.route('/modifyProducts', methods=['POST', 'GET'])

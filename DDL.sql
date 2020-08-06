@@ -23,35 +23,27 @@ VALUES (2, "paulrabil99@gmail.com", "Paul", "Rabil", "205 NW Cheddar St", "1985/
 INSERT INTO Customers (customerID, email, firstName, lastName, address, dob, phone, city, state, zipcode)
 VALUES (3, "tanzman@gmail.com", "Johnathan", "Tanz", "190 SE Yardsale Ln", "1998/04/20", "5032031027", "Bend", "Oregon", "97703");
 
-
-DROP TABLE IF EXISTS Order_Products;
-CREATE TABLE Order_Products (
-	orderID INT NOT NULL,
-	productID INT NOT NULL,
-	FOREIGN KEY (orderID) REFERENCES Orders(orderID),
-	FOREIGN KEY (productID) REFERENCES Products(productID)
-);
-
 DROP TABLE IF EXISTS Orders;
 CREATE TABLE Orders (
 	orderID INT NOT NULL AUTO_INCREMENT,
 	customerID INT,
 	productID INT NOT NULL,
 	dateOrdered DATE NOT NULL,
-	dateDelivered DATE NOT NULL,
+	dateDelivered DATE,
 	totalPrice decimal(10,2) NOT NULL,
 	PRIMARY KEY (orderID),
-	FOREIGN KEY (productID) REFERENCES Products(productID)
+	FOREIGN KEY (customerID) REFERENCES Customers(customerID) ON UPDATE CASCADE ON DELETE CASCADE,
+	FOREIGN KEY (productID) REFERENCES Products(productID) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 INSERT INTO Orders (orderID, customerID, productID, dateOrdered, dateDelivered, totalPrice)
-VALUES (1, 2, 2, "2020/06/29", "2020/07/02", 204.99);
+VALUES (1, 2, 2, "2020/06/29", "2020/07/02", 24.99);
 
 INSERT INTO Orders (orderID, customerID, productID, dateOrdered, dateDelivered, totalPrice)
-VALUES (2, 1, 3, "2020/07/03", "2020/07/06", 109.99);
+VALUES (2, 1, 3, "2020/07/03", "2020/07/06", 289.99);
 
 INSERT INTO Orders (orderID, customerID, productID, dateOrdered, dateDelivered, totalPrice)
-VALUES (3, 3, 1, "2020/07/08", "2020/07/13", 204.99);
+VALUES (3, 3, 1, "2020/07/08", "2020/07/13", 149.99);
 
 
 DROP TABLE IF EXISTS Products;
@@ -71,6 +63,18 @@ INSERT INTO Products (productID, productName, brandName, price, category, sale, 
 INSERT INTO Products (productID, productName, brandName, price, category, sale, color) VALUES (3, "Cascade S Helmet", "Cascade", 289.99, "Equipment", False, "Matte Grey");
 
 
+DROP TABLE IF EXISTS Order_Products;
+CREATE TABLE Order_Products (
+	orderID INT NOT NULL,
+	productID INT NOT NULL,
+	FOREIGN KEY (orderID) REFERENCES Orders(orderID) ON UPDATE CASCADE ON DELETE CASCADE,
+	FOREIGN KEY (productID) REFERENCES Products(productID) ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+
+INSERT INTO Order_Products (orderID, productID) VALUES (1,2);
+INSERT INTO Order_Products (orderID, productID) VALUES (2,3);
+INSERT INTO Order_Products (orderID, productID) VALUES (3,1);
 
 DROP TABLE IF EXISTS Stores;
 CREATE TABLE Stores (

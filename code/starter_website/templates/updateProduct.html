@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/static/styles.css">
+	<title>Products Page</title>
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" ></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" ></script>
+  </head>
+
+  <body>
+
+	<header>Products</header>
+
+  <nav class="topbars">
+    <ul>
+		<li class="topbar"><a href="http://flip3.engr.oregonstate.edu:7777/home">Home</a></li>
+		<li class="topbar"><a href="http://flip3.engr.oregonstate.edu:7777/products">Products</a></li>
+		<li class="topbar"><a href="http://flip3.engr.oregonstate.edu:7777/orders">Orders</a></li>
+		<li class="topbar"><a href="http://flip3.engr.oregonstate.edu:7777/customers">Customers</a></li>
+		<li class="topbar"><a href="http://flip3.engr.oregonstate.edu:7777/stores">Stores</a></li>
+		<li class="topbar"><a href="http://flip3.engr.oregonstate.edu:7777/orderProducts">Order_Products</a></li>
+	</ul>
+  </nav>
+    <div class="productsContainer">
+		<form action="/updateProduct/{{product[0]}}" method="post">
+			Product ID: <input name="productID" value = "{{ product[0] }}"><br>
+			Product name: <input type="text" name="productName" value = "{{ product[1] }}"><br>
+			Brand: <input type="text" name="brandName" value = "{{ product[2] }}"><br>
+			Price: <input type="text" name="price" value = "{{ product[3] }}"><br>
+			Category: <input type="text" name="category" value = "{{ product[4] }}"><br>
+			Sale: <input type="text" name="sale" value = "{{ product[5] }}"><br>
+			Color: <input type="text" name="color" value = "{{ product[6] }}"><br>
+			<input type="submit" value="Submit">
+		</form>
+	</div>
+	

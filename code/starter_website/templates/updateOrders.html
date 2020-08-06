@@ -15,7 +15,7 @@
 	
 	  <body>
 	
-		<header>Orders</header>
+		<header>Order_Products</header>
 	
 	  <nav class="topbars">
 		<ul>
@@ -27,14 +27,10 @@
 			<li class="topbar"><a href="http://flip3.engr.oregonstate.edu:7777/orderProducts">Order_Products</a></li>
 		</ul>
 	  </nav>
-		<div class="ordersContainer">
-			<form action="/updateOrder/{{order[0]}}" method="post">
-				Order ID: <input name="orderID" value = "{{ order[0] }}"><br>
-				Customer ID: <input type="text" name="customerID" value = "{{ order[1] }}"><br>
-				Product ID: <input type="text" name="productID" value = "{{ order[2] }}"><br>
-				Date Ordered: <input type="text" name="dateOrdered" value = "{{ order[3] }}"><br>
-				Date Delivered: <input type="text" name="dateDelivered" value = "{{ order[4] }}"><br>
-				Total Price: <input type="text" name="totalPrice" value = "{{ order[5] }}"><br>
+		<div class="orderProductsContainer">
+			<form action="/updateOrders/{{orders[0]}}" method="post">
+				Order ID: <input type="text"  name="orderID" value = "{{ orders[0] }}"><br>
+				Product ID: <input type="text" name="productID" value = "{{ orders[1] }}"><br>
 				<input type="submit" value="Submit">
 			</form>
 		</div>
