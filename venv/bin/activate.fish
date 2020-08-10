@@ -36,7 +36,7 @@ end
 # Unset irrelevant variables.
 deactivate nondestructive
 
-set -gx VIRTUAL_ENV "/nfs/stak/users/jonesd5/public_html/Pride/venv"
+set -gx VIRTUAL_ENV "/nfs/stak/users/obriecam/CS340/212Pride/venv"
 
 set -gx _OLD_VIRTUAL_PATH $PATH
 set -gx PATH "$VIRTUAL_ENV/bin" $PATH

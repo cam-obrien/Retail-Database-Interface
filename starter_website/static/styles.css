@@ -91,7 +91,7 @@ table, th, td {
 }
 
 .ordersContainer{
-	margin-left: 50px;
+	margin-left: 250px;
 }
 
 .customersContainer{
@@ -99,25 +99,25 @@ table, th, td {
 	text-align: center;
 }
 .orderProductsContainer{
-	margin-left: 50px;
+	margin-left: 250px;
 }
 
 .productsContainer{
-	margin-left: 50px;
+	margin-left: 250px;
 }
 
 .storesContainer{
-	margin-left: 50px;
+	margin-left: 250px;
 }
 
 .imageContainer{
 	position: fixed;
-	margin-left: 650px;
+	margin-left: 250px;
 	margin-top: 10px;
 }
 
 
-.OPSearch {
+.orderIDSelect {
   margin-bottom: 20px;
 }
 

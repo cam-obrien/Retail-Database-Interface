@@ -48,14 +48,26 @@ def stores():
     print(result)
     return render_template('stores.html', rows=result)
 
-@webapp.route('/orderProducts')
+@webapp.route('/orderProducts', methods=['POST', 'GET'])
 def orderProducts():
+
     print("Fetching and rendering orderProducts webpage")
     db_connection = connect_to_database()
-    query = "SELECT orderID, productID FROM Order_Products;"
-    result = execute_query(db_connection, query).fetchall()
 
-    return render_template('orderProducts.html', rows=result)
+    cursor=db_connection.cursor()
+    cursor.execute("SELECT COUNT(*) FROM Order_Products")
+    (nOptions,) = cursor.fetchone()
+    print("options = ", nOptions)
+
+    if request.method == 'GET':
+        query = "SELECT orderID, productID FROM Order_Products;"
+        result = execute_query(db_connection, query).fetchall()
+        return render_template('orderProducts.html', rows=result, options=nOptions)
+    elif request.method == 'POST':
+        orderID = request.form.get('orderIDSelect')
+        query = 'SELECT orderID, productID FROM Order_Products WHERE orderID='+orderID
+        result = execute_query(db_connection, query)
+        return render_template('orderProducts.html', rows=result, options=nOptions)
  
 ####################################### END OF SELECT/READ FUNCTIONALITY ##############################################
 ####################################### GET/POST FUNCTIONALITY ##############################################

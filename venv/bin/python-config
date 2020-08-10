@@ -1,4 +1,4 @@
-#!/nfs/stak/users/jonesd5/public_html/Pride/venv/bin/python
+#!/nfs/stak/users/obriecam/CS340/212Pride/venv/bin/python
 
 import sys
 import getopt
