@@ -111,8 +111,8 @@ table, th, td {
 }
 
 .imageContainer{
-	position: fixed;
-	margin-left: 250px;
+	display: flex;
+	margin-left: 300px;
 	margin-top: 10px;
 }
 
