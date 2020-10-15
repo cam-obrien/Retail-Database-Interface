@@ -1,4 +1,4 @@
-# 212Pride
+# LAX 4 U
 CS340 Project
 
 This project is hosted on the OSU web server. MUST BE ON OSU VPN.
